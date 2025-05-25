@@ -101,6 +101,36 @@ async function OrdenarArray() {
 
   console.log(`Números ordenados: ${numerosArray.join(', ')}`);
 }
+// Função para verificar se um número é par ou ímpar
+async function parOuImpar() {
+  const entrada = await perguntar("Digite um número inteiro: ");
+  const numero = parseInt(entrada);
+
+  if (isNaN(numero)) {
+    console.log("Por favor, digite um número válido.");
+  } else {
+    if (numero % 2 === 0) {
+      console.log(`O número ${numero} é par.`);
+    } else {
+      console.log(`O número ${numero} é ímpar.`);
+    }
+  }
+}
+// Função para tabuada simples
+async function tabuadaSimples() {
+  const entrada = await perguntar("Digite um número inteiro: ");
+  const numero = parseInt(entrada);
+
+  if (isNaN(numero)) {
+    console.log("Por favor, digite um número válido.");
+  } else {
+    console.log(`Tabuada do ${numero}:`);
+    for (let i = 1; i <= 10; i++) {
+      const resultado = numero * i;
+      console.log(`${numero} x ${i} = ${resultado}`);
+    }
+  }
+}
 
 // Função principal com menu
 async function menuPrincipal() {
@@ -109,6 +139,8 @@ async function menuPrincipal() {
   console.log("2 - Contador de Palavras");
   console.log("3 - Calcular média de três notas");
   console.log("4 - Ordenar Array de Números");
+  console.log("5 - Verificar se um número é par ou ímpar");
+  console.log("6 - Ver Tabuada");
   console.log("0 - Sair");
 
   const opcao = await perguntar("Escolha uma opção: ");
@@ -125,6 +157,12 @@ async function menuPrincipal() {
       break;
     case '4':
       await OrdenarArray();
+      break;
+    case '5':
+      await parOuImpar();
+      break;
+    case '6':
+      await parOuImpar();
       break;
     case '0':
       console.log("Encerrando o programa...");
