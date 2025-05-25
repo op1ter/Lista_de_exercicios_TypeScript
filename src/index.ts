@@ -64,6 +64,7 @@ async function menuPrincipal() {
   console.log("=== Menu ===");
   console.log("1 - Calculadora");
   console.log("2 - Contador de Palavras");
+  console.log("3 - Calcular média de três notas");
   console.log("0 - Sair");
 
   const opcao = await perguntar("Escolha uma opção: ");
