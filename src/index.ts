@@ -132,6 +132,86 @@ async function tabuadaSimples() {
   }
 }
 
+// Calculadora de IMC (Índice de Massa Corporal)
+function classificarIMC(imc: number): string {
+    if (imc < 18.5) {
+        return "Abaixo do peso";
+    } else if (imc < 24.9) {
+        return "Peso normal";
+    } else if (imc < 29.9) {
+        return "Sobrepeso";
+    } else if (imc < 34.9) {
+        return "Obesidade grau 1";
+    } else if (imc < 39.9) {
+        return "Obesidade grau 2";
+    } else {
+        return "Obesidade grau 3 (obesidade mórbida)";
+    }
+}
+async function classimc() {
+    const pesoInput = await perguntar("Digite seu peso (kg): ");
+    const alturaInput = await perguntar("Digite sua altura (m): ");
+
+    const peso = parseFloat(pesoInput);
+    const altura = parseFloat(alturaInput);
+
+    const imc = peso / (altura * altura);
+
+    console.log(`Seu IMC é: ${imc.toFixed(2)}`);
+    console.log(`Classificação: ${classificarIMC(imc)}`);
+
+    rl.close();
+}
+// Calculadora de IMC (Índice de Massa Corporal)
+
+// Programa Java com Herança: Pessoa e Aluno
+class Pessoa {
+    private nome: string;
+    private idade: number;
+
+    constructor(nome: string, idade: number) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public getNome(): string {
+        return this.nome;
+    }
+
+    public getIdade(): number {
+        return this.idade;
+    }
+
+    public exibirInformacoes(): void {
+        console.log(`Nome: ${this.nome}`);
+        console.log(`Idade: ${this.idade}`);
+    }
+}
+
+class Aluno extends Pessoa {
+    private matricula: string;
+
+    constructor(nome: string, idade: number, matricula: string) {
+        super(nome, idade);
+        this.matricula = matricula;
+    }
+
+    public getMatricula(): string {
+        return this.matricula;
+    }
+
+    public override exibirInformacoes(): void {
+        super.exibirInformacoes();
+        console.log(`Matrícula: ${this.matricula}`);
+    }
+}
+
+async function alunop(): void {
+    const aluno = new Aluno("João da Silva", 20, "2025A001");
+    aluno.exibirInformacoes();
+}
+// Programa Java com Herança: Pessoa e Aluno
+
 // Função principal com menu
 async function menuPrincipal() {
   console.log("=== Menu ===");
@@ -141,6 +221,8 @@ async function menuPrincipal() {
   console.log("4 - Ordenar Array de Números");
   console.log("5 - Verificar se um número é par ou ímpar");
   console.log("6 - Ver Tabuada");
+  console.log("7 - Calculadora de IMC");
+  console.log("8 - Herança: Pessoa e Aluno");
   console.log("0 - Sair");
 
   const opcao = await perguntar("Escolha uma opção: ");
@@ -162,7 +244,13 @@ async function menuPrincipal() {
       await parOuImpar();
       break;
     case '6':
-      await parOuImpar();
+      await tabuadaSimples();
+      break;
+    case '7':
+      await classimc();
+      break;
+    case '8':
+      await alunop();
       break;
     case '0':
       console.log("Encerrando o programa...");
