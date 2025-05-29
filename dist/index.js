@@ -95,6 +95,14 @@ async function OrdenarArray() {
     }
     console.log(`Números ordenados: ${numerosArray.join(', ')}`);
 }
+//Função para numeros pares entre 1 e 20
+async function NumeroPares1a20() {
+    for (let i = 1; i <= 20; i++) {
+        if (i % 2 === 0) {
+            console.log(i);
+        }
+    }
+}
 // Função principal com menu
 async function menuPrincipal() {
     console.log("=== Menu ===");
@@ -102,6 +110,7 @@ async function menuPrincipal() {
     console.log("2 - Contador de Palavras");
     console.log("3 - Calcular média de três notas");
     console.log("4 - Ordenar Array de Números");
+    console.log("5 - Números pares entre 1 e 20:");
     console.log("0 - Sair");
     const opcao = await perguntar("Escolha uma opção: ");
     switch (opcao.trim()) {
@@ -116,6 +125,9 @@ async function menuPrincipal() {
             break;
         case '4':
             await OrdenarArray();
+            break;
+        case '5':
+            await NumeroPares1a20();
             break;
         case '0':
             console.log("Encerrando o programa...");
